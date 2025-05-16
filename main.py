@@ -24,7 +24,7 @@ cursor = connection.cursor()
 # FastAPI app
 app = FastAPI()
 
-# Root redirect to docs
+# Root redirect to the  docs
 @app.get("/", include_in_schema=False)
 async def redirect_to_docs():
     return RedirectResponse(url="/docs")
