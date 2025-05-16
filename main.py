@@ -57,6 +57,8 @@ async def delete_item(item_id: int):
     connection.commit()
     return {"message": "Item deleted successfully"}
 
+# ------------------ CUSTOMERS ------------------
+
 @app.get("/customers/{customer_id}")
 async def get_customer(customer_id: int):
     cursor.execute("SELECT * FROM customers WHERE id=?;", (customer_id,))
@@ -90,7 +92,7 @@ async def delete_customer(customer_id: int):
 
 @app.get("/orders/{order_id}")
 async def get_order(order_id: int):
-    cursor.execute("SELECT * FROM orders WHERE id=?;", (order_id
+    cursor.execute("SELECT * FROM orders WHERE id=?;", (order_id,))
     order = cursor.fetchone()
     if order is None:
         raise HTTPException(status_code=404, detail="Order not found")
